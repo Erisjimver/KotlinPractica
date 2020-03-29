@@ -2,6 +2,7 @@ package com.example.aplicacionandroidkotlin
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import java.lang.NullPointerException
 import java.security.KeyStore
 
 class MainActivity : AppCompatActivity() {
@@ -23,6 +24,8 @@ class MainActivity : AppCompatActivity() {
         loops()
         //Leccion 7
         nullSafety()
+        //leccion 8
+        clases()
 
 
         }
@@ -54,24 +57,24 @@ class MainActivity : AppCompatActivity() {
 
         //Aqui Enteros (Byte,Short, Int, Long)
         val numeroUno=1
-        val numeroDos: int =2
-        val suma:int =numero1+numero2
+        val numeroDos: Int =2
+        val suma:Int =numeroUno+numeroDos
         println(suma)
 
         //aqui decimales (double,float)
         val variableDecimal=1.5
-        val variableDecimal2:double=2.5
-        val variableDecimal3:float=1.5
+        val variableDecimal2:Double=2.5
+        val variableDecimal3:Double=1.5
         val variableDecimal4=5.1
         val Entero=5
         val sumaDecimal= variableDecimal+variableDecimal2+variableDecimal3+variableDecimal4+Entero
         println(sumaDecimal)
 
         //aqui datos boleanos
-        var variableBooleana=True
-        val variableBooleana1=False
-        val queEs=variableBooleana==variableBooleana1
-        println(queEs)
+        //var variableBooleana:Boolean=True
+        //val variableBooleana1:Boolean=True
+        //val queEs=variableBooleana==variableBooleana1
+       // println(queEs)
 
     }
 
@@ -86,8 +89,8 @@ class MainActivity : AppCompatActivity() {
         // >= mayos o igual
         // <=menor o igual
 
-        val miNumero:int =2
-        val miNumero2:int =2
+        val miNumero:Int =2
+        val miNumero2:Int =2
 
         if(miNumero==miNumero2){
             println("Los numeros son iguales")
@@ -204,7 +207,7 @@ class MainActivity : AppCompatActivity() {
     private fun funcionMaps(){
 
         //sintaxis
-        var miMap:Map<String,int> = mapOf()
+        var miMap:Map<String,Int> = mapOf()
         println(miMap)
 
         //añadir elementos
@@ -236,7 +239,7 @@ class MainActivity : AppCompatActivity() {
     private fun loops(){
 
         val miArray:List<String> = listOf("Hola", "Este es un tutorial de kotlin")
-        val miMap: MutableMap<String,int> = mutableMapOf("Israel" to 1, "Jimena" to 2, "Michelle" to 3)
+        val miMap: MutableMap<String,Int> = mutableMapOf("Israel" to 1, "Jimena" to 2, "Michelle" to 3)
 
         //bucle for
         for(miString in miArray){
@@ -257,7 +260,7 @@ class MainActivity : AppCompatActivity() {
             println(x)
         }
         for(x in 10 downTo 0 step 2){//descie 2 en 2 desde 10
-            println(x) en
+            println(x)
         }
         val miNumericArray =(0..20)
         for(myNum in miNumericArray){
@@ -289,7 +292,7 @@ class MainActivity : AppCompatActivity() {
         //mySafetyString="Hola"
 
         if(mySafetyString != null){
-            println(mySafetyString!!)
+           // println(mySafetyString!!)
         }else{
             println("Si es nula")
         }
@@ -302,8 +305,20 @@ class MainActivity : AppCompatActivity() {
         //esto la verdad es un problema
     }
 
+    //aqui se habla de clases
+    fun clases(){
+        val israel=Programmer("Israel",26, arrayOf(Programmer.Language.KOTLIN,Programmer.Language.SWIFT), null)
+        println(israel.name)
+        println(israel.age)
+        israel.code()
+
+        val jimena=Programmer("Israel",26, arrayOf(Programmer.Language.JAVA), arrayOf(israel))
+
+        println(jimena.name)
+        println("${jimena.friends?.first()?.name} es amigo de ${jimena.name}")
 
 
+    }
 
 
 }
